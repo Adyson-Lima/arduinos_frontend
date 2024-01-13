@@ -22,6 +22,16 @@ export default function Arduinos(){
     }
   }
 
+  // Delete, remove elementos da api
+  async function deleteArduino(id){
+    try {
+      await api.delete(`api/v1/arduinos/${id}`,{});
+      setArduinos(my_arduinos.filter(arduino => arduino.id !== id));
+    } catch (error) {
+      alert('Erro ao excluir');      
+    }
+  }
+
 
   return(
 
@@ -56,7 +66,8 @@ export default function Arduinos(){
                   onClick={() => updateArduino(arduino.id)}>Editar</button>
 
                   <button data-testid="mybtn2" type="button"
-                  className="btn btn-outline-danger">Excluir</button>
+                  className="btn btn-outline-danger" style={{margin: '2px'}}
+                  onClick={() => deleteArduino(arduino.id)}>Excluir</button>
 
                 </td>
               </tr>
