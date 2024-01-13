@@ -1,8 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, {useState, useEffect} from "react";
-// import api from '../../services/api';
+import api from '../../services/api';
 
 export default function Arduinos(){
+
+  const[my_arduinos, setArduinos] = useState([]);
+  const navigate = useNavigate();
+
+  // Read, busca todos os registros da api
+  useEffect(() => {
+    api.get('api/v1/arduinos', {})
+    .then(response => {setArduinos(response.data)})
+  },[]);
+
 
   return(
 
@@ -18,17 +28,18 @@ export default function Arduinos(){
         <table data-testid="mytable" className="table table-hover">
           <thead>
             <tr>
-              <th scope="col">##</th>
-              <th scope="col">##</th>
-              <th scope="col">##</th>
-              <th scope="col">##</th>
+              <th scope="col">Id</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Ações</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row"></th>
-                <td></td>
-                <td></td>
+            {my_arduinos.map(arduino => (
+              <tr key={arduino.id}>
+                <th scope="row">{arduino.id}</th>
+                <td>{arduino.name}</td>
+                <td>{arduino.description}</td>
                 <td>
 
                   <button data-testid="mybtn1" type="button"
@@ -38,7 +49,9 @@ export default function Arduinos(){
                   className="btn btn-outline-danger">Excluir</button>
 
                 </td>
-            </tr>
+              </tr>
+            ))}
+            
           </tbody>
         </table>
 
