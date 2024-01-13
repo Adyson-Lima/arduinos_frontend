@@ -13,6 +13,15 @@ export default function Arduinos(){
     .then(response => {setArduinos(response.data)})
   },[]);
 
+  // Update, navega para tela NewUpdate
+  async function updateArduino(id){
+    try {
+      navigate(`/newupdate/${id}`);
+    } catch (error) {
+      alert('Erro ao navegar');      
+    }
+  }
+
 
   return(
 
@@ -43,7 +52,8 @@ export default function Arduinos(){
                 <td>
 
                   <button data-testid="mybtn1" type="button"
-                  className="btn btn-outline-info">Editar</button>
+                  className="btn btn-outline-info" style={{margin: '2px'}}
+                  onClick={() => updateArduino(arduino.id)}>Editar</button>
 
                   <button data-testid="mybtn2" type="button"
                   className="btn btn-outline-danger">Excluir</button>
