@@ -16,4 +16,8 @@ describe('testes da tela Arduinos', () => {
     expect(screen.getByTestId('mycard')).toBeInTheDocument();
   });
 
+  it('Existe link Novo em Arduinos?', () => {
+    expect(screen.getByTestId('mylink')).toBeInTheDocument();
+  });
+
 });
