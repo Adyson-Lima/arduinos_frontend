@@ -31,6 +31,9 @@ export default function Arduinos(){
                 <td></td>
                 <td>
 
+                  <button data-testid="mybtn1" type="button"
+                  className="btn btn-outline-info">Editar</button>
+
                 </td>
             </tr>
           </tbody>
