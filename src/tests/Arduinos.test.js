@@ -24,4 +24,8 @@ describe('testes da tela Arduinos', () => {
     expect(screen.getByTestId('mytable')).toBeInTheDocument();
   });
 
+  it('Existe botão editar em Arduinos?', () => {
+    expect(screen.getByTestId('mybtn1')).toBeInTheDocument();
+  });
+
 });
